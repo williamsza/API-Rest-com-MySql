@@ -1,4 +1,4 @@
-package com.api.produto;
+package com.api.repository.entity;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class CategoriesRest {
 
    
      //public List<Repository> listar() {
-     //return  repository.findAll();
+     // return  repository.findAll();
 
-     //}
+    // }
 
 }

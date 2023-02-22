@@ -1,23 +1,24 @@
-package com.api.model;
+package com.api.repository.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "Movies")
-public class Movie {
 
-    
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Categories {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    @Column(nullable =false)
     private String name;
+    @Column(nullable =false)
     private boolean active;
+    @Column(nullable =false)
 
-    
     public String getId() {
         return id;
     }
@@ -36,8 +37,4 @@ public class Movie {
     public void setActive(boolean active) {
         this.active = active;
     }
-
-    
-
-    
 }
