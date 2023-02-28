@@ -2,19 +2,22 @@ package com.api.repository.entity;
 
 import java.util.List;
 
-import org.apache.catalina.startup.ClassLoaderFactory.Repository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.api.model.MovieModel;
+import com.api.repository.database.MovieRepository;
 
 
 public class CategoriesRest {
 
    @Autowired
-    private Repository repository;
+    private MovieRepository repository;
 
-   
-     //public List<Repository> listar() {
-     // return  repository.findAll();
 
-    // }
+     public List<MovieModel> listar() {
+      return  repository.findAll();
+
+    }
 
 }

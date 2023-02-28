@@ -1,4 +1,4 @@
-package com.api.produto.entity;
+package com.api.repository.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,20 +8,16 @@ import jakarta.persistence.Id;
 
 @Entity
 
-public class Categories {
+public class CategoriesEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue()
     private String id;
     @Column(nullable =false)
     private String name;
     @Column(nullable =false)
     private boolean active;
     @Column(nullable =false)
-
-
-
-
 
     public String getId() {
         return id;
@@ -41,9 +37,4 @@ public class Categories {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
-
-
-
-    
 }

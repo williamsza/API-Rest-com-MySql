@@ -6,33 +6,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.api.model.Movie;
-import com.api.produto.database.RepositoryCategories;
+import com.api.model.MovieModel;
+import com.api.repository.database.MovieRepository;
+
+import java.util.List;
 
 @RestController
-public class Controller {
+public class MovieController {
 
     @Autowired
-    private RepositoryCategories filmes;
+    private MovieRepository movieRepository;
 
     @PostMapping("/api")
-    public Movie cadastrar(@RequestBody Movie obj){
-        return movie.save(obj);
+    public MovieModel cadastrar(@RequestBody MovieModel filmes){
+        return movieRepository.save(filmes);
 
     }
+
     @GetMapping
-    public  List<filmes> selecionar(){
-        return filme.findAll();
+    public  List<MovieModel> selecionar(){
+        return movieRepository.findAll();
 
     }
 
 
-    @GetMapping("")
-    public String mensagem(){
-        return "Hello world";
-
-    }
-
+    
     @GetMapping("/boasVindas/{nome}")
     public String boasVindas(@PathVariable String name){
         return "Seja bem vindo(a)! "+name;
@@ -41,10 +39,15 @@ public class Controller {
     public String boasVindas(){
         return "Seja bem vindo(a)! ";
     }
-
+    
     @PostMapping("/movie")
-    public Movie movie(@RequestBody Movie movie){
+    public MovieModel movie(@RequestBody MovieModel movie){
         return movie;
+        
+    }
+    @GetMapping("")
+    public String mensagem(){
+        return "Hello world";
 
     }
     
