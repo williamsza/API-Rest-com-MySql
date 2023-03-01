@@ -7,16 +7,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
+
 @Entity
 @Table(name = "Movies")
 public class MovieModel {
     
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String name;
     private boolean active;
-
     
     public String getId() {
         return id;
@@ -34,9 +34,7 @@ public class MovieModel {
         return active;
     }
     public void setActive(boolean active) {
-
         this.active = active;
     }
-
 
 }
