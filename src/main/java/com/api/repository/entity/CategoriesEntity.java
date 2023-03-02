@@ -5,33 +5,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-
-
 public class CategoriesEntity {
+
+    //Construtor
+    public CategoriesEntity(Long id, String name, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
     @Column(nullable =false)
     private String name;
     @Column(nullable =false)
     private boolean active;
     @Column(nullable =false)
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {

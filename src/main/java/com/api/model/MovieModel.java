@@ -6,22 +6,30 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
-
 @Entity
 @Table(name = "Movies")
 public class MovieModel {
+
+    //Construtor
+    public MovieModel(Long id, String name, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+    }
     
+
+    
+ 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private boolean active;
     
-    public String getId() {
+    public  Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
