@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.api.model.MovieModel;
 import com.api.repository.database.MovieRepository;
-import com.api.service.MovieService;
+
 
 @RestController
 @RequestMapping("api")
@@ -17,41 +17,36 @@ public class MovieController {
 
     @Autowired
     private MovieRepository movieRepository;
-    private MovieService movieService;
-
-    @PostMapping("/api")// "/id"
-    @ResponseStatus(HttpStatus.CREATED)
-    public MovieModel cadastrar(@RequestBody MovieModel filmes){
-        return movieRepository.save(filmes);
-      
-
-    }
-    @GetMapping
+   
+    @GetMapping("/movie")
     @ResponseStatus(HttpStatus.OK)
     public List<MovieModel> selecionarFilme(){
        return movieRepository.findAll();
-       
-
     }
 
-    @GetMapping("/api/{id}")
+    @PostMapping("/movie")// "/id"
+    @ResponseStatus(HttpStatus.CREATED)
+    public MovieModel cadastrar(@RequestBody MovieModel filmes){
+        return movieRepository.save(filmes);
+    }
+
+    @GetMapping("/movie/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public MovieModel buscarFilmePorId(@PathVariable("id") Long id){
+    public MovieModel GetFilmeById(@PathVariable("id") Long id){
         return movieRepository.findById(id)
         .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Filme não existe"));
-
     }
-    @PutMapping("/api")
+    @PutMapping("/movie")
     public MovieModel editar(@RequestBody MovieModel filmes){
+        movieRepository.findById(filmes).get();
         return movieRepository.save(filmes);
 
+            
     }
-    @DeleteMapping("/api/{id}")
+    @DeleteMapping("/movie/{id}")
     public void remover(@PathVariable("id") Long id){
-        MovieModel filmes = buscarFilmePorId(id);
-        movieRepository.delete(filmes);
-
-
+       // MovieModel filmes = GetFilmeById(id);
+        movieRepository.deleteById(id);
     }
 
      }

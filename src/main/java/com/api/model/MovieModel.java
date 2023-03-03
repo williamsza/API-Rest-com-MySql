@@ -10,15 +10,6 @@ import jakarta.persistence.Table;
 @Table(name = "Movies")
 public class MovieModel {
 
-    //Construtor
-    public MovieModel(Long id, String name, boolean active) {
-        this.id = id;
-        this.name = name;
-        this.active = active;
-    }
-    
-
-    
  
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

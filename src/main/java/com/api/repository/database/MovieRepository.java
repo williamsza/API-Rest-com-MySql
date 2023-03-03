@@ -13,6 +13,6 @@ public interface MovieRepository
 
 
    List<MovieModel>findAll();
-   Optional<MovieModel> findById(Long id);
+   Optional<MovieModel> findById(MovieModel filmes);
 
 }
