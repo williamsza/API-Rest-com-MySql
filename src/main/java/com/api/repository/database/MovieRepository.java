@@ -15,4 +15,7 @@ public interface MovieRepository
    List<MovieModel>findAll();
    Optional<MovieModel> findById(MovieModel filmes);
 
+
+   //Optional<MovieModel> findBy(Long id);
+
 }

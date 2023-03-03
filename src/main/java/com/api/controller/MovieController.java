@@ -32,19 +32,18 @@ public class MovieController {
 
     @GetMapping("/movie/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public MovieModel GetFilmeById(@PathVariable("id") Long id){
+    public MovieModel SelecionarFilmePorId(@PathVariable("id") Long id){
         return movieRepository.findById(id)
         .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Filme não existe"));
     }
-    @PutMapping("/movie")
-    public MovieModel editar(@RequestBody MovieModel filmes){
-        movieRepository.findById(filmes).get();
-        return movieRepository.save(filmes);
 
-            
+    @PutMapping("/movie")//"/movie{id}"
+    public MovieModel editar(@RequestBody MovieModel filmes){
+        return movieRepository.save(filmes);
+   
     }
     @DeleteMapping("/movie/{id}")
-    public void remover(@PathVariable("id") Long id){
+    public void remover(@PathVariable("id")@RequestBody Long id){
        // MovieModel filmes = GetFilmeById(id);
         movieRepository.deleteById(id);
     }
